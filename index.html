@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .names {
+            margin-top: 20px;
+        }
+        .names div {
+            opacity: 0.2;
+            cursor: pointer;
+            transition: opacity 0.3s, font-weight 0.3s;
+            padding: 5px;
+        }
+        .names div.active {
+            opacity: 1;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        #gif {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="names">
+        <div>ميس هند</div>
+        <div>استاذ ستيفين</div>
+        <div>ميس ميرا</div>
+    </div>
+
+    <div class="controls">
+        <button id="controlButton">وشوشني</button>
+        <audio id="audio" src="D:\claps-44774.mp3"></audio>
+    </div>
+
+    <img id="gif" src=https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGo3c3p5czU0bmE0djA4b3l5YWU1ZDRsZjJ4M3JvM2QzNW1kaW1hZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/t96auri9ZZn61GKiVx/giphy.gif alt="GIF">
+
+    <script>
+        document.querySelectorAll('.names div').forEach(name => {
+            name.addEventListener('click', () => {
+                name.classList.toggle('active');
+            });
+        });
+
+        const controlButton = document.getElementById('controlButton');
+        const names = document.querySelectorAll('.names div');
+        const gif = document.getElementById('gif');
+        const audio = document.getElementById('audio');
+
+        controlButton.addEventListener('click', () => {
+            names.forEach(name => {
+                name.classList.add('active');
+                name.classList.add('bold');
+            });
+
+            gif.style.display = 'block';
+            audio.play();
+        });
+    </script>
+    
+</body>
+</html>
